@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package astedu.diego.servicio;
+package astedu.diego.servicios;
 
-import astedu.diego.dao.Interfaz_Funcional;
-import astedu.diego.dao.Paciente_DAO;
+import astedu.diego.especifico.DAO_Paciente;
 import astedu.diego.modelo.entidad.Paciente;
 import java.util.List;
+import astedu.diego.especifico.IDAO_Paciente;
 
 /**
  *
  * @author drlomi95
  */
-public class Servicio_Paciente implements Interfaz_servicio_Paciente {
-    private Interfaz_Funcional pacientes;
+public class SERV_Paciente implements ISERV_Paciente {
+    private IDAO_Paciente pacientes;
     
-    public Servicio_Paciente(){
-        pacientes = new Paciente_DAO();
+    public SERV_Paciente(){
+        pacientes = new DAO_Paciente();
     }
     
     public void GuardarPaciente(Paciente paciente){
@@ -37,8 +37,7 @@ public class Servicio_Paciente implements Interfaz_servicio_Paciente {
         return pacientes.ListarPacientes();
     }
 
-    public Paciente Buscar(int id) {
-        Paciente p = pacientes.Buscar(id);
-        return p;
+    public Paciente BuscarPaciente(int id){
+        return pacientes.Buscar(id);
     }
 }

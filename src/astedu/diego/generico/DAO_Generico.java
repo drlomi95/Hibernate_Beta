@@ -15,10 +15,10 @@ import org.hibernate.Session;
  *
  * @author drlomi95
  */
-public class CRUD_Generico<clase_persistente, clave_primaria extends Serializable> implements Interfaz_Generica<clase_persistente, clave_primaria> {
+public class DAO_Generico<objeto, clave_primaria extends Serializable> implements IDAO_Generico<objeto, clave_primaria> {
 
     private Session session;
-    public Class<clase_persistente> domainClass = getDomainClass();
+    public Class<objeto> domainClass = getDomainClass();
 
     protected Class getDomainClass() {
         if (domainClass == null) {
@@ -35,7 +35,7 @@ public class CRUD_Generico<clase_persistente, clave_primaria extends Serializabl
         return session;
     }
 
-    public void Guardar(clase_persistente t) {
+    public void Guardar(objeto t) {
         try {
             getSession().save(t);
             session.getTransaction().commit();
@@ -44,14 +44,14 @@ public class CRUD_Generico<clase_persistente, clave_primaria extends Serializabl
         }
 
     }
-
-    public clase_persistente Buscar(clave_primaria id) {
-        clase_persistente objeto = (clase_persistente) getSession().load(domainClass, id);
+    //Antes usaba getSession().load que creaba una sesion adicional y provocaba conflictos.
+    public objeto Buscar(clave_primaria id) {
+        objeto objeto = (objeto) getSession().get(domainClass, id);
         session.getTransaction().commit();
         return objeto;
     }
 
-    public void Actualizar(clase_persistente t) {
+    public void Actualizar(objeto t) {
         try {
             getSession().update(t);
             session.getTransaction().commit();
@@ -61,15 +61,10 @@ public class CRUD_Generico<clase_persistente, clave_primaria extends Serializabl
         }
     }
 
-    public void Eliminar(clase_persistente t) {
-
-        try {
+    public void Eliminar(objeto t) {
             getSession().delete(t);
             session.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
+        
 
     }
 

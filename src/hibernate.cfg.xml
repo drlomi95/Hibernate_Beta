@@ -3,7 +3,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.url">jdbc:mysql://localhost/Hibernate_db</property>
+    <property name="connection.url">jdbc:mysql://localhost/Hibernate_db?useSSL=false</property>
     <property name="connection.username">Hibernate</property>
     <property name="connection.password">Virtual18</property>
     <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>

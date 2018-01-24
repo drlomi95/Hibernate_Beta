@@ -3,22 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package astedu.diego.servicio;
+package astedu.diego.especifico;
 
 import astedu.diego.modelo.entidad.Paciente;
 import java.util.List;
+import astedu.diego.generico.IDAO_Generico;
 
 /**
  *
  * @author drlomi95
  */
-public interface Interfaz_servicio_Paciente {
-
-    public void GuardarPaciente(Paciente paciente);
-
-    public void ActualizarPaciente(Paciente paciente);
-
-    public void EliminarPaciente(Paciente paciente);
-
+public interface IDAO_Paciente extends IDAO_Generico<Paciente, Integer>{
     public List<Paciente> ListarPacientes();
 }

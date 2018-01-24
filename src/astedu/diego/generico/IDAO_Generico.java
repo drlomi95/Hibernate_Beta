@@ -11,13 +11,13 @@ package astedu.diego.generico;
  */
 import java.io.Serializable;
 
-public interface Interfaz_Generica<clase_persistente, clave_primaria extends Serializable> {
+public interface IDAO_Generico<objeto, clave_primaria extends Serializable> {
 
-    void Guardar(clase_persistente t);
+    void Guardar(objeto t);
 
-    void Actualizar(clase_persistente t);
+    void Actualizar(objeto t);
 
-    clase_persistente Buscar(clave_primaria id);
+    objeto Buscar(clave_primaria id);
 
-    void Eliminar(clase_persistente t);
+    void Eliminar(objeto t);
 }
